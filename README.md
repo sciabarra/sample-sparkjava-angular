@@ -53,3 +53,10 @@ Java code for the server part should reside in src/java.
 
 Check the example in src/java/rugby/todo for a sample of the backend code
 
+## Test
+
+End to End (intregration) tests are written in Java, and they use Fluentlenium (a FLuent interface to Selenium).
+
+To execure a test, first launch in background the server (with re-start) then run a test using the command "test".
+
+Check the sample for the format.

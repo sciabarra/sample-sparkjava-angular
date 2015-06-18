@@ -20,7 +20,6 @@ libraryDependencies ++=
      , "junit" % "junit" % "4.11"
      , "org.specs2" %% "specs2-core" % "3.6.1" % "test"
      , "com.novocode" % "junit-interface" % "0.11" % "test"
-     , "com.github.detro" % "phantomjsdriver" % "1.2.0" % "test"
      , "org.fluentlenium" % "fluentlenium-core" % "0.10.4-SNAPSHOT" % "test"
      , "org.fluentlenium" % "fluentlenium-assertj" % "0.10.4-SNAPSHOT" % "test"
      )
