@@ -52,3 +52,10 @@ The main module is called 'Module', each submodule is called 'Module.something'.
 Java code for the server part should reside in src/java.
 
 Check the example in src/java/rugby/todo for a sample of the backend code
+
+# Commit hook
+
+All your commit should include Story #number Status where 
+
+- #number is the story number
+- Status is Reviewing Doing Done
