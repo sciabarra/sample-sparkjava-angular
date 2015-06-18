@@ -7,10 +7,10 @@ import java.util.List;
  * Created by msciab on 16/06/15.
  */
 public class TodoList {
-    List<TodoItem> list = new LinkedList<TodoItem>();
+    List<TodoItem> list;
 
     public TodoList() {
-        add("Add things to do.");
+       reset();
     }
 
     public List<TodoItem> list() {
@@ -26,4 +26,15 @@ public class TodoList {
         list.remove(position);
         return list;
     }
+
+    public void reset() {
+        list= new LinkedList<TodoItem>();
+    }
+
+    public String test() {
+        reset();
+        add("Add things to do.");
+        return "OK";
+    }
 }
+

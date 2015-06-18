@@ -57,7 +57,7 @@
     <div class="row">
         <div class="col-lg-12" ng-controller="todoCtl">
             <h1>ToDo List</h1>
-            <ol >
+            <ol id="todolist" >
                 <li ng-repeat="todo in todos">
                     <input name="done" type="radio" ng-click="del($index)" value="{{$index}}" >
                     {{todo.action}}
