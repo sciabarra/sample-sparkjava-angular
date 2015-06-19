@@ -4,22 +4,22 @@ import org.fluentlenium.adapter.FluentTest;
 
 import static org.fluentlenium.assertj.FluentLeniumAssertions.*;
 
+import org.fluentlenium.adapter.util.SharedDriver;
 import org.fluentlenium.core.domain.FluentWebElement;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.htmlunit.HtmlUnitDriver;
+import org.openqa.selenium.phantomjs.PhantomJSDriver;
 
 import javax.swing.*;
-//import org.openqa.selenium.firefox.FirefoxDriver;
-//import org.openqa.selenium.phantomjs.PhantomJSDriver;
+import javax.swing.text.html.HTML;
 
 /**
  * Created by msciab on 18/06/15.
  */
+@SharedDriver(type = SharedDriver.SharedType.ONCE)
 @RunWith(JUnit4.class)
 public class TodoTest extends FluentTest {
 
@@ -37,12 +37,18 @@ public class TodoTest extends FluentTest {
 
         fill("#actioninput").with("First");
         find("#actionbutton").click();
-        e = find("#todolist").find("li").get(1);
+        e = find("#todolist").find("li", 1);
+        //System.out.println("*****" + e.html());
         assertThat(e).hasText("First");
         find("input[type='radio']").get(0).click();
         //JOptionPane.showConfirmDialog(null, e);
         e = find("#todolist").find("li").first();
         assertThat(e).hasText("First");
+    }
+
+    PhantomJSDriver phjs = new PhantomJSDriver();
+    @Override public WebDriver getDefaultDriver() {
+        return phjs;
     }
 
 }
