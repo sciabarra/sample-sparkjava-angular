@@ -1,7 +1,9 @@
 package rugby;
 
 import static spark.Spark.*;
-import rugby.todo.Todo;
+
+import rugby.control.classroom.ClassroomSvc;
+import rugby.todo.TodoSvc;
 
 public class Main {
 
@@ -11,7 +13,8 @@ public class Main {
 
         App.routes();
 
-        Todo.routes();
+        TodoSvc.routes();
+        ClassroomSvc.routes();
 
     }
 }

@@ -21,7 +21,7 @@ import javax.swing.text.html.HTML;
  */
 @SharedDriver(type = SharedDriver.SharedType.ONCE)
 @RunWith(JUnit4.class)
-public class TodoTest extends FluentTest {
+public class TodoSvcTest extends FluentTest {
 
     FluentWebElement e;
 

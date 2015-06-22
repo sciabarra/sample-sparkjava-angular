@@ -6,7 +6,7 @@ import static spark.Spark.*;
 /**
  * Created by msciab on 16/06/15.
  */
-public class Todo {
+public class TodoSvc {
 
     static TodoList todos = new TodoList();
 
