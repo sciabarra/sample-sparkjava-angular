@@ -10,11 +10,9 @@ public class Main {
     public static void main(String[] args) {
 
         externalStaticFileLocation("target/web/public/main");
-
-        App.routes();
-
         TodoSvc.routes();
         ClassroomSvc.routes();
+
 
     }
 }

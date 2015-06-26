@@ -3,17 +3,14 @@ package rugby.control.classroom;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
-import java.util.List;
-
 /**
- * Created by riccardobachetti on 22/06/15.
+ * Created by riccardobachetti on 26/06/15.
  */
 @AllArgsConstructor
-public class ClassroomItem {
+public class Studenti {
     @Getter
     String nome;
-    //List studenti;
-    //List professori;
+    String cognome;
 
 
 }
