@@ -24,10 +24,17 @@ libraryDependencies ++=
      , "org.fluentlenium" % "fluentlenium-core" % "0.10.3" % "test"
      , "org.fluentlenium" % "fluentlenium-assertj" % "0.10.3" % "test"
      , "com.codeborne" % "phantomjsdriver" % "1.2.1"
-     )
+     , "com.jayway.restassured" % "rest-assured" % "2.4.1" % "test"
+     , "com.jayway.restassured" % "json-path" % "2.4.1" % "test"
+     , "com.jayway.restassured" % "json-schema-validator" % "2.4.1" % "test"
+  )
 
 enablePlugins(SbtWeb)
 
 Revolver.settings
 
 net.virtualvoid.sbt.graph.Plugin.graphSettings
+
+parallelExecution in Test := false
+
+javaOptions in Revolver.reStart += "-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=8000"

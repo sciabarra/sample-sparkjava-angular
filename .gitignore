@@ -2,4 +2,4 @@ target/
 .idea/
 .classpath
 .project
-
+._*

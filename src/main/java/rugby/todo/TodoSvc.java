@@ -1,4 +1,7 @@
 package rugby.todo;
+
+import rugby.Util;
+
 import static rugby.Util.*;
 
 import static spark.Spark.*;
@@ -11,11 +14,36 @@ public class TodoSvc {
     static TodoList todos = new TodoList();
 
     public static void routes() {
-        get("/todo/list", (q, s) ->  todos.list(), toJson);
-        get("/todo/add/:action", (q, s) ->  todos.add(q.params(":action")), toJson);
-        get("/todo/del/:index", (q, s) ->  todos.remove(toInt(q.params(":index"))), toJson);
-        get("/todo/test", (q, s) ->  todos.test());
 
+        get("/todo", "application/json", (q, s) -> {
+            s.type("application/json");
+            return todos;
+        }, toJson);
+
+        post("/todo", "application/json", (q, s) -> {
+            s.type("application/json");
+            TodoItem item = parse.fromJson(q.body(), TodoItem.class);
+            item.setId(Util.nextId());
+            return todos.add(item);
+        }, toJson);
+
+        put("/todo", "application/json", (q, s) -> {
+            s.type("application/json");
+            TodoItem item = parse.fromJson(q.body(), TodoItem.class);
+            return todos.update(item);
+        }, toJson);
+
+        delete("/todo/:id", "application/json", (q, s) -> {
+            s.type("application/json");
+            long id = toLong(q.params(":id"));
+            System.out.println("*** removing "+id+" in "+todos.getItems());
+            return todos.remove(id);
+        }, toJson);
+
+        get("/todo/test", (q, s) -> {
+            s.type("application/json");
+            return todos.test();
+        }, toJson);
     }
 
 }

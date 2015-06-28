@@ -16,17 +16,18 @@ This will download the requirements
 
 Now type
 
-> run
+> re-start
 
 It will start an embedded server.
 
 You can start playing with http://localhost:4567/ 
 
-Note it will redirect to a /page/index.html. Read below
+Note it will redirect to a /page/index.html. Read below for editing Javascript resources
 
-# Layout
+# Writing an application in javascript/html
 
 ## Resources
+
 Application code for the client should reside in src/app. 
 
 Most notably, html in app/html, css in app/css, images in img/js
@@ -57,6 +58,11 @@ Check the example in src/java/rugby/todo for a sample of the backend code
 
 End to End (intregration) tests are written in Java, and they use Fluentlenium (a FLuent interface to Selenium).
 
-To execure a test, first launch in background the server (with re-start) then run a test using the command "test".
+Rest tests are written in Java using REST-assured
 
-Check the sample for the format.
+To execute a test, first launch in background the server (with re-start) then run a test using the command 
+
+    test
+    
+Check the sample  code for the format.
+
