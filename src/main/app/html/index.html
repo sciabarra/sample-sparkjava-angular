@@ -59,12 +59,22 @@
             <h1>ToDo List</h1>
             <ol id="todolist" >
                 <li ng-repeat="todo in todos">
-                    <input name="done" type="radio" ng-click="del($index)" value="{{$index}}" >
-                    {{todo.action}}
+                    <input name="done" type="radio" ng-click="select(todo.id)" value="{{todo.id}}" >
+                    {{todo.action}}<br>
+                    <small><b>{{todo.priority}}</b></small>
                 </li>
             </ol>
-            <input id="actioninput" type="text" name="action" ng-model="action" size="20">
-            <button id="actionbutton" ng-click="add(action)">Add</button>
+            <input id="actioninput" type="text" name="action" ng-model="item.action" size="20">
+            <select ng-model="item.priority">
+                <option>HIGH</option>
+                <option selected>NORMAL</option>
+                <option>LOW</option>
+            </select>
+            <br>
+            <button id="addbutton" ng-hide="editing" ng-click="add()">Add</button>
+            <button id="editbutton" ng-hide="editing" ng-click="edit()">Edit</button>
+            <button id="savebutton" ng-hide="!editing" ng-click="save()">Save</button>
+            <button id="donebutton" ng-click="done()">Done</button>
         </div>
     </div>
     <!-- /.row -->

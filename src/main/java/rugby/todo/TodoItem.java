@@ -2,12 +2,31 @@ package rugby.todo;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+import lombok.Setter;
+import rugby.Util;
 
 /**
  * Created by msciab on 16/06/15.
  */
-@AllArgsConstructor
+
+@RequiredArgsConstructor
 public class TodoItem {
-   @Getter
-   private String action;
+
+    public enum Priority {
+        HIGH,
+        NORMAL,
+        LOW
+    }
+
+    @Getter
+    @Setter
+    private long id = Util.nextId();
+
+    @Getter
+    final private String action;
+
+    @Getter
+    final private Priority priority;
+
 }
