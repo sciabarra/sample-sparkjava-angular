@@ -66,3 +66,8 @@ To execute a test, first launch in background the server (with re-start) then ru
     
 Check the sample  code for the format.
 
+# References
+
+- http://sparkjava.com/documentation.html
+- https://github.com/FluentLenium/FluentLenium
+- https://code.google.com/p/rest-assured/wiki/Usage

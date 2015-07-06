@@ -27,7 +27,11 @@ libraryDependencies ++=
      , "com.jayway.restassured" % "rest-assured" % "2.4.1" % "test"
      , "com.jayway.restassured" % "json-path" % "2.4.1" % "test"
      , "com.jayway.restassured" % "json-schema-validator" % "2.4.1" % "test"
+     , "com.h2database" % "h2" % "1.4.187" % "jooq"
+     , "com.h2database" % "h2" % "1.4.187"
+     , "org.jooq" % "jooq" % "3.6.2"
   )
+
 
 enablePlugins(SbtWeb)
 
@@ -38,3 +42,25 @@ net.virtualvoid.sbt.graph.Plugin.graphSettings
 parallelExecution in Test := false
 
 javaOptions in Revolver.reStart += "-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=8000"
+
+seq(flywaySettings: _*)
+
+seq(jooqSettings:_*)
+
+flywayUrl := s"jdbc:h2:file:${baseDirectory.value}/target/rugby"
+
+flywayUser := "SA"
+
+flywayPassword := ""
+
+jooqOptions := Seq("jdbc.driver" -> "org.h2.Driver",
+   "jdbc.url" -> flywayUrl.value,
+   "jdbc.user" -> flywayUser.value,
+   "jdbc.password" -> flywayPassword.value,
+   "generator.database.name" -> "org.jooq.util.h2.H2Database",
+   "generator.database.inputSchema" -> "PUBLIC",
+   "generator.target.packageName" -> "rugby.jooq")
+
+jooqOutputDirectory := file("src") / "main" / "java"
+
+addCommandAlias("go", "; re-stop ; assets ; flywayMigrate ; jooq:codegen ;re-start")
